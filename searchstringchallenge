@@ -1,0 +1,34 @@
+function SearchingChallenge($str) {
+  $cace=[];
+  for($i = 0; $i <= strlen($str);$i++){
+    for($e = -1;$e >= -strlen($str);$e--){
+      if($str[$i] == substr($str,$e,1)){
+        //mengecek apakah string urutan $i sama dengan string urutan terakhir
+        //diulang dan merubah urutan dari -1 ke -panjang string
+        //diulang lagi dan merubah $i sampai $ panjang string
+        if(substr($str,$i,$e + 1) == strrev(substr($str,$i,$e + 1))){
+          //apabila sama dan ketika string dibalik sama
+          //simpan ke array  
+          array_push($cace,substr($str,$i,$e + 1));
+        }
+        
+      }
+    }
+  }
+  $maxl = max(array_map('strlen', $cace));
+    //cari element array dengan string terpanjang
+  if($maxl > 2){  
+    foreach($cace as $c){
+      if(strlen($c) == $maxl){
+        $answer = $c;
+      }
+    }
+    return $answer;
+  }else{
+    return 'none';
+  }
+  //apabila $maxl lebih dari 2
+  //mencari element yang panjang nya $maxl
+  //dan mengembalikan jawaban
+
+}
